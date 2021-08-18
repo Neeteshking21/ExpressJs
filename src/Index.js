@@ -28,7 +28,13 @@ app.get('/home', (req, res)=>{
 })
 
 app.get('/about', (req, res)=>{
-
+    res.send("About page")
+})
+app.get('*', (req, res)=>{
+    res.render("404", {
+        err:"Opps page not Found"
+    })
+})
     /* If we use res.write than we have to end it using res.send otherWise brower process will be underGoing */
     // res.write("<h1>About Page</h1><h3>Helo this is Neetesh Kumar Shrama</h3>")
     // res.json([{
@@ -36,7 +42,6 @@ app.get('/about', (req, res)=>{
     //     name:"Neetesh"
     // }])
     // res.send()
-})
 
 
 app.listen(PORT, ()=>console.log(`Server is running on http://localhost:${PORT}`))
