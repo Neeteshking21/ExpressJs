@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const hbs = require('hbs')
 const PORT = 8000
 const app = express()
 
@@ -9,8 +10,13 @@ app.use(express.static(staticpath))
 */
 // build in middleware
 const staticpath = path.join(__dirname, '../public')
+const templetePath = path.join(__dirname, '../templetes/views')
+const partials = path.join(__dirname, '../templetes/partials')
+
+hbs.registerPartials(partials)
 // For Dynamic website using Handlebars templete Engine
 app.set('view engine', "hbs")
+app.set('views', templetePath)
 
 app.get('/', (req, res)=>{
     res.render('Index', {name:'Neetesh'}) // set dynamic content
