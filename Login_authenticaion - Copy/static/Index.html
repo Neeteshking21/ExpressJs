@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/" id="reg_form" >
+        <input type="email" placeholder="Email" name="email" id="email" /><br/>
+        <input type="password" placeholder="Password" name="password" id="pass"/><br/>
+        <input type="password" placeholder="Confirm Password" name="cpassword" id="cpass" /><br/>
+        <input type="submit" value="Submit" >
+    </form>
+
+    <script>
+
+        const form = document.getElementById('reg_form')
+        form.addEventListener('submit', submit)
+
+        // 1. send data as JSON (Very common when you're using JS)
+        // 2. Send data as urlencoded
+
+        async function submit(evt){
+            console.log(evt)
+            evt.preventDefault()
+            const email = document.getElementById('email').value
+            const pass = document.getElementById('pass').value
+            const cpass = document.getElementById('cpass').value
+
+            console.log(`Email : ${email} ${pass} ${cpass}`)
+
+            const result = await fetch('/api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    pass,
+                    cpass
+                })
+            }).then((res)=>  res.json())
+            console.log(result)
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "login_authenticaion",
+  "version": "1.0.0",
+  "description": "Node js Login Authentication with JWT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Authentication",
+    "Login"
+  ],
+  "author": "Neetesh Kumar Sharma",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.4"
+  }
+}
