@@ -23,13 +23,13 @@
         // 2. Send data as urlencoded
 
         async function submit(evt){
-            console.log(evt)
+            // console.log(evt)
             evt.preventDefault()
             const email = document.getElementById('email').value
             const pass = document.getElementById('pass').value
             const cpass = document.getElementById('cpass').value
 
-            console.log(`Email : ${email} ${pass} ${cpass}`)
+            // console.log(`Email : ${email} ${pass} ${cpass}`)
 
             const result = await fetch('/api/register', {
                 method: 'POST',
