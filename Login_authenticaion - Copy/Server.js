@@ -25,6 +25,21 @@ app.post('/api/register', async (req, res) => {
     const {email, pass} = req.body
     const encryptPass = await bcrypt.hash(pass, 10)
 
+    try{
+        const response = await User.create({
+            email:email,
+            password:encryptPass
+        })
+        console.log(`User created successfully ${response}`)
+    }
+    catch(error){
+        console.log(error.code)
+        if(error.code){
+            console.log("Email already in use")
+            return  res.json({status: 1100, error: 'Email already in use'});
+        }
+    }
+
     console.log(encryptPass)
     res.json({status: 'ok'});
     // Analysts

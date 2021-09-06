@@ -10,7 +10,7 @@
     <form action="/" id="reg_form" >
         <input type="email" placeholder="Email" name="email" id="email" /><br/>
         <input type="password" placeholder="Password" name="password" id="pass"/><br/>
-        <input type="password" placeholder="Confirm Password" name="cpassword" id="cpass" /><br/>
+
         <input type="submit" value="Submit" >
     </form>
 
@@ -27,7 +27,6 @@
             evt.preventDefault()
             const email = document.getElementById('email').value
             const pass = document.getElementById('pass').value
-            const cpass = document.getElementById('cpass').value
 
             // console.log(`Email : ${email} ${pass} ${cpass}`)
 
@@ -38,8 +37,7 @@
                 },
                 body: JSON.stringify({
                     email,
-                    pass,
-                    cpass
+                    pass
                 })
             }).then((res)=>  res.json())
             console.log(result)
