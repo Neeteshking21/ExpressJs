@@ -42,7 +42,7 @@
             }).then((res)=>  res.json())
             console.log(result)
             if(result.status == 'ok'){
-                console.log(`You got the token ${result.data}`)
+                localStorage.setItem('token', result.data)
                 document.getElementById('pass').value = ''
             }
             else{

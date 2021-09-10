@@ -18,6 +18,7 @@ const app = express()
 
 app.use('/', express.static(path.join(__dirname, 'static')))
 app.use('/login', express.static(path.join(__dirname, 'static/Login.html')))
+app.use('/change-password', express.static(path.join(__dirname, 'static/change-password.html')))
 app.use(express.json())
 
 app.post('/api/register', async (req, res) => {
@@ -76,7 +77,7 @@ app.post('/api/login', async (req, res)=>{
     
     else{
         const user = await User.findOne({email}).lean()
-        console.log(user)
+        
         if(user==null){
             console.log('am i Here')
             return res.json({status:'error', data:'Invalid Username or password'})
@@ -93,6 +94,16 @@ app.post('/api/login', async (req, res)=>{
 
         return res.json({status: 'error', data:'Invalid Username or password'})  
     }   
+})
+
+app.post('/api/change-password', (req, res)=>{
+    // console.log(req.body)
+    // const { token } = req.body
+    //  console.log('Your token is : -    '+token)
+        
+    // const veryfy = jwt.verify(token, JWT_SECRET)
+    // console.log(veryfy)
+    return  res.json({status: 'Ok'});
 })
 
 app.listen(PORT, () => {
